@@ -1,0 +1,41 @@
+#include <iostream>
+#include <cstring> 
+
+struct Student {
+    char name[100];   
+    int age;           
+    char gender;       
+    char branch[50];   
+
+    Student(const char* n = "", int a = 0, char g = 'M', const char* b = "") {
+        strcpy(name, n);
+        age = a;
+        gender = g;
+        strcpy(branch, b);
+    }
+};
+
+int main() {
+    Student* students = new Student[100];  
+
+    for (int i = 0; i < 100; ++i) {
+        students[i] = Student("Student", 20, 'M', "Computer Science");
+    }
+
+    std::cout << "Original size: 100 students" << std::endl;
+
+    Student* resized_students = new Student[200];
+    for (int i = 0; i < 100; ++i) {
+        resized_students[i] = students[i];
+    }
+
+    delete[] students;
+
+    students = resized_students;
+
+    std::cout << "New size: 200 students" << std::endl;
+
+    delete[] students;
+
+    return 0;
+}
