@@ -1,0 +1,30 @@
+#include <iostream>
+#include <cstring>  
+
+using namespace std;
+
+int main() {
+    char str[100], search_seq[4];  
+
+    cout << "Enter a string: ";
+    cin.getline(str, 100); 
+
+    cout << "Enter a sequence of 3 characters to search: ";
+    cin.getline(search_seq, 4); 
+
+    if (strlen(search_seq) != 3) {
+        cout << "The sequence should be exactly 3 characters long." << endl;
+        return 1;  
+    }
+
+    char* found = strstr(str, search_seq);
+
+    if (found) {
+        cout << "Sequence found at position: " << (found - str) << endl;
+    } else {
+        cout << "Sequence not found in the string." << endl;
+    }
+
+    return 0;
+}
+
